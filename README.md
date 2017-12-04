@@ -8,14 +8,14 @@ Feel free to use it, and if the community wants the package to be maintained fro
 
 [![](https://img.shields.io/npm/dm/react-native-prompt.svg?style=flat-square)](https://www.npmjs.com/package/react-native-prompt)
 
-# react-native-prompt
+# rn-prompt
 
 A cross-platform prompt component for React Native.
 
 ## Installation
 
 ```
-$ npm install react-native-prompt --save
+$ npm install rn-prompt --save
 ```
 
 ## Demo
@@ -27,7 +27,7 @@ $ npm install react-native-prompt --save
 ## Basic Usage
 
 ```js
-import Prompt from 'react-native-prompt';
+import Prompt from 'rn-prompt';
 
 // Inside render()
 <Prompt
