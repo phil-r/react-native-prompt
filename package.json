@@ -1,10 +1,10 @@
 {
-  "name": "react-native-prompt",
+  "name": "rn-prompt",
   "version": "1.0.1",
   "description": "A cross-platform prompt component for React Native.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaysoo/react-native-prompt"
+    "url": "https://github.com/jakallergis/rn-prompt"
   },
   "scripts": {
     "install:example": "cd PromptExample && npm install",
