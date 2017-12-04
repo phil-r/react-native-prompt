@@ -1,3 +1,11 @@
+# Disclaimer:
+**I did not create and do not maintain this project!** *(at least not at the moment)*
+
+This project belongs to [jaysoo](https://github.com/jaysoo/react-native-prompt) and is a fork from [lightman73's](https://github.com/lightman73/react-native-prompt) fork that includes changes to remove the prop-types error.
+This fork is only and only because the original package is not maintained anymore and i wanted to publish it to use it with my projects.
+
+Feel free to use it, and if the community wants the package to be maintained from this repo, it's all fine by me.
+
 [![](https://img.shields.io/npm/dm/react-native-prompt.svg?style=flat-square)](https://www.npmjs.com/package/react-native-prompt)
 
 # react-native-prompt
