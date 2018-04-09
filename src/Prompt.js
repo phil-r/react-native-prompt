@@ -116,6 +116,7 @@ export default class Prompt extends Component {
               style={[styles.dialogInput, inputStyle]}
               defaultValue={defaultValue}
               onChangeText={this._onChangeText}
+              onSubmitEditing={this._onSubmitPress}
               placeholder={placeholder}
               autoFocus={true}
               underlineColorAndroid="white"
