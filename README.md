@@ -78,6 +78,11 @@ npm test
 
 ## Changelog
 
+### 1.0.3
+
+- Added Keyboard return as a submit (Thanks https://github.com/aquacash5)
+- Compatibility problems with React >= 15.5
+
 ### 1.0.0
 
 - Updates `value` when `defaultValue` changes. (Thanks https://github.com/vessp)
@@ -87,6 +92,6 @@ npm test
 
 - Adds `textInputProps` to allow additional props to be passed to the input element. Thanks @yueshuaijie!
 
-### 0.18.5 
+### 0.18.5
 
 - Fixed compatibility with React Native 0.27.2 (thanks [@sibelius](https://github.com/sibelius) and [@tonyxiao](https://github.com/tonyxiao)!)
