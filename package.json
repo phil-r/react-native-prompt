@@ -1,6 +1,6 @@
 {
   "name": "rn-prompt",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A cross-platform prompt component for React Native.",
   "repository": {
     "type": "git",
