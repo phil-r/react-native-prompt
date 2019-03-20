@@ -6,7 +6,7 @@ This fork is only and only because the original package is not maintained anymor
 
 Feel free to use it, and if the community wants the package to be maintained from this repo, it's all fine by me.
 
-[![](https://img.shields.io/npm/dm/react-native-prompt.svg?style=flat-square)](https://www.npmjs.com/package/react-native-prompt)
+[![](https://img.shields.io/npm/dm/rn-prompt.svg?style=flat-square)](https://www.npmjs.com/package/rn-prompt)
 
 # rn-prompt
 
