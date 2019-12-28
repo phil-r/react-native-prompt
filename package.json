@@ -1,10 +1,10 @@
 {
-  "name": "rn-prompt",
+  "name": "@phil-r/react-native-prompt",
   "version": "1.0.4",
   "description": "A cross-platform prompt component for React Native.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jakallergis/rn-prompt"
+    "url": "https://github.com/phil-r/react-native-prompt"
   },
   "scripts": {
     "install:example": "cd PromptExample && npm install",
@@ -32,7 +32,7 @@
     "ios",
     "android"
   ],
-  "author": "Jack Hsu <jack.hsu@gmail.com> (http://jaysoo.ca/)",
+  "author": "Phil",
   "license": "ISC",
   "devDependencies": {
     "appium": "^1.4.16",
