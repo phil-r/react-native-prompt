@@ -6,16 +6,16 @@ This fork is only and only because the original package is not maintained anymor
 
 Feel free to use it, and if the community wants the package to be maintained from this repo, it's all fine by me.
 
-[![](https://img.shields.io/npm/dm/rn-prompt.svg?style=flat-square)](https://www.npmjs.com/package/rn-prompt)
+[![](https://img.shields.io/npm/v/@phil-r/react-native-prompt.svg?style=flat-square)](https://www.npmjs.com/package/@phil-r/react-native-prompt)
 
-# rn-prompt
+# react-native-prompt
 
 A cross-platform prompt component for React Native.
 
 ## Installation
 
 ```
-$ npm install rn-prompt --save
+$ npm install @phil-r/react-native-prompt --save
 ```
 
 ## Demo
@@ -27,7 +27,7 @@ $ npm install rn-prompt --save
 ## Basic Usage
 
 ```js
-import Prompt from 'rn-prompt';
+import Prompt from '@phil-r/react-native-prompt';
 
 // Inside render()
 <Prompt
@@ -77,6 +77,10 @@ npm test
 ```
 
 ## Changelog
+
+### 1.0.6
+
+- Deprecation warnings fix
 
 ### 1.0.3
 
