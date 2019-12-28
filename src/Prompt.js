@@ -52,6 +52,10 @@ export default class Prompt extends Component {
     onChangeText: () => {},
   };
 
+  static getDerivedStateFromProps(props) {
+    return { visible: props.visible }
+  }
+
   state = {
     value: '',
     visible: false,
@@ -59,11 +63,6 @@ export default class Prompt extends Component {
 
   componentDidMount() {
     this.setState({value: this.props.defaultValue});
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { visible, defaultValue } = nextProps;
-    this.setState({ visible, value:defaultValue });
   }
 
   _onChangeText = (value) => {
