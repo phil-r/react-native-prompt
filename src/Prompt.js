@@ -76,7 +76,12 @@ export default class Prompt extends Component {
 
   _onSubmitPress = () => {
     const { value } = this.state;
-    if (value.length <= this.props.limit) {
+    const { limit } = this.props;
+    if (limit) {
+      if (value.length <= limit) {
+        this.props.onSubmit(value);
+      }
+    } else {
       this.props.onSubmit(value);
     }
   };
@@ -109,6 +114,7 @@ export default class Prompt extends Component {
       limit
     } = this.props;
     const { length } = this.state;
+    const limitReached = !!limit && length > limit;
     return (
       <View style={styles.dialog} key="prompt">
         <View style={styles.dialogOverlay} />
@@ -133,7 +139,7 @@ export default class Prompt extends Component {
               <Text
                 style={[
                   styles.dialogLimitText,
-                  length > limit && { color: 'red' }
+                  limitReached && { color: 'red' }
                 ]}
               >
                 {length} / {limit}
@@ -157,7 +163,7 @@ export default class Prompt extends Component {
               </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback
-              disabled={length > limit}
+              disabled={limitReached}
               onPress={this._onSubmitPress}
             >
               <View
@@ -168,7 +174,7 @@ export default class Prompt extends Component {
                     styles.dialogActionText,
                     buttonTextStyle,
                     submitButtonTextStyle,
-                    length > limit && { color: 'gray' }
+                    limitReached && { color: 'gray' }
                   ]}
                 >
                   {submitText}

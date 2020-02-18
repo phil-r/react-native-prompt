@@ -61,6 +61,7 @@ Props:
 - `cancelText` (string) -- The string that is displayed on the cancel button (defaults to "Cancel")
 - `onChangeText` (function) -- Function that is called with user input when it changes.
 - `textInputProps` (Object) -- Additional props on the input element
+- `limit` (number) -- limit the length of the text
 
 ## Testing
 
