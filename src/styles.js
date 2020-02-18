@@ -40,7 +40,7 @@ export default StyleSheet.create({
   },
   dialogFooter: {
     borderTopWidth: 1,
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   dialogAction: {
     flex: 1,
@@ -50,5 +50,12 @@ export default StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     color: '#006dbf'
+  },
+  dialogLimit: {
+    padding: 4,
+    alignItems: 'flex-end'
+  },
+  dialogLimitText: {
+    color: 'lightgray'
   }
 });

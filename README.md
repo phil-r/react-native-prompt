@@ -78,6 +78,10 @@ npm test
 
 ## Changelog
 
+### 1.0.7
+
+- Add limit support
+
 ### 1.0.6
 
 - Deprecation warnings fix

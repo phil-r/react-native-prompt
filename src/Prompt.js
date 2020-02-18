@@ -32,6 +32,7 @@ export default class Prompt extends Component {
     cancelButtonTextStyle: PropTypes.object,
     inputStyle: PropTypes.object,
     textInputProps: PropTypes.object,
+    limit: PropTypes.number
   };
 
   static defaultProps = {
@@ -39,7 +40,7 @@ export default class Prompt extends Component {
     defaultValue: '',
     cancelText: 'Cancel',
     submitText: 'OK',
-    borderColor:'#ccc',
+    borderColor: '#ccc',
     promptStyle: {},
     titleStyle: {},
     buttonStyle: {},
@@ -50,29 +51,34 @@ export default class Prompt extends Component {
     cancelButtonTextStyle: {},
     inputStyle: {},
     onChangeText: () => {},
+    limit: 0
   };
 
   static getDerivedStateFromProps(props) {
-    return { visible: props.visible }
+    return { visible: props.visible };
   }
 
   state = {
     value: '',
     visible: false,
+    length: 0
   };
 
   componentDidMount() {
-    this.setState({value: this.props.defaultValue});
+    this.setState({ value: this.props.defaultValue });
   }
 
-  _onChangeText = (value) => {
-    this.setState({ value });
+  _onChangeText = value => {
+    const length = value.length;
+    this.setState({ value, length });
     this.props.onChangeText(value);
   };
 
   _onSubmitPress = () => {
     const { value } = this.state;
-    this.props.onSubmit(value);
+    if (value.length <= this.props.limit) {
+      this.props.onSubmit(value);
+    }
   };
 
   _onCancelPress = () => {
@@ -80,7 +86,7 @@ export default class Prompt extends Component {
   };
 
   close = () => {
-    this.setState({visible: false});
+    this.setState({ visible: false });
   };
 
   _renderDialog = () => {
@@ -99,16 +105,16 @@ export default class Prompt extends Component {
       submitButtonTextStyle,
       cancelButtonStyle,
       cancelButtonTextStyle,
-      inputStyle
+      inputStyle,
+      limit
     } = this.props;
+    const { length } = this.state;
     return (
       <View style={styles.dialog} key="prompt">
-        <View style={styles.dialogOverlay}/>
+        <View style={styles.dialogOverlay} />
         <View style={[styles.dialogContent, { borderColor }, promptStyle]}>
           <View style={[styles.dialogTitle, { borderColor }]}>
-            <Text style={[styles.dialogTitleText, titleStyle]}>
-              { title }
-            </Text>
+            <Text style={[styles.dialogTitleText, titleStyle]}>{title}</Text>
           </View>
           <View style={styles.dialogBody}>
             <TextInput
@@ -119,19 +125,52 @@ export default class Prompt extends Component {
               placeholder={placeholder}
               autoFocus={true}
               underlineColorAndroid="white"
-              {...this.props.textInputProps} />
+              {...this.props.textInputProps}
+            />
           </View>
+          {limit && (
+            <View style={[styles.dialogLimit]}>
+              <Text
+                style={[
+                  styles.dialogLimitText,
+                  length > limit && { color: 'red' }
+                ]}
+              >
+                {length} / {limit}
+              </Text>
+            </View>
+          )}
           <View style={[styles.dialogFooter, { borderColor }]}>
             <TouchableWithoutFeedback onPress={this._onCancelPress}>
-              <View style={[styles.dialogAction, buttonStyle, cancelButtonStyle]}>
-                <Text style={[styles.dialogActionText, buttonTextStyle, cancelButtonTextStyle]}>
+              <View
+                style={[styles.dialogAction, buttonStyle, cancelButtonStyle]}
+              >
+                <Text
+                  style={[
+                    styles.dialogActionText,
+                    buttonTextStyle,
+                    cancelButtonTextStyle
+                  ]}
+                >
                   {cancelText}
                 </Text>
               </View>
             </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={this._onSubmitPress}>
-              <View style={[styles.dialogAction, buttonStyle, submitButtonStyle]}>
-                <Text style={[styles.dialogActionText, buttonTextStyle, submitButtonTextStyle]}>
+            <TouchableWithoutFeedback
+              disabled={length > limit}
+              onPress={this._onSubmitPress}
+            >
+              <View
+                style={[styles.dialogAction, buttonStyle, submitButtonStyle]}
+              >
+                <Text
+                  style={[
+                    styles.dialogActionText,
+                    buttonTextStyle,
+                    submitButtonTextStyle,
+                    length > limit && { color: 'gray' }
+                  ]}
+                >
                   {submitText}
                 </Text>
               </View>
@@ -144,9 +183,13 @@ export default class Prompt extends Component {
 
   render() {
     return (
-      <Modal onRequestClose={() => this.close()} transparent={true} visible={this.props.visible}>
+      <Modal
+        onRequestClose={() => this.close()}
+        transparent={true}
+        visible={this.props.visible}
+      >
         {this._renderDialog()}
       </Modal>
     );
   }
-};
+}
