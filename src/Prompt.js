@@ -134,7 +134,7 @@ export default class Prompt extends Component {
               {...this.props.textInputProps}
             />
           </View>
-          {limit && (
+          {limit ? (
             <View style={[styles.dialogLimit]}>
               <Text
                 style={[
@@ -145,7 +145,7 @@ export default class Prompt extends Component {
                 {length} / {limit}
               </Text>
             </View>
-          )}
+          ) : null}
           <View style={[styles.dialogFooter, { borderColor }]}>
             <TouchableWithoutFeedback onPress={this._onCancelPress}>
               <View
