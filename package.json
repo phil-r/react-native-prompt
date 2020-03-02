@@ -1,6 +1,6 @@
 {
   "name": "@phil-r/react-native-prompt",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A cross-platform prompt component for React Native.",
   "repository": {
     "type": "git",
