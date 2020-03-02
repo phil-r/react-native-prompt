@@ -65,7 +65,10 @@ export default class Prompt extends Component {
   };
 
   componentDidMount() {
-    this.setState({ value: this.props.defaultValue });
+    this.setState({
+      value: this.props.defaultValue,
+      length: this.props.defaultValue ? this.props.defaultValue.length : 0
+    });
   }
 
   _onChangeText = value => {
