@@ -1,12 +1,14 @@
 {
   "name": "@phil-r/react-native-prompt",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A cross-platform prompt component for React Native.",
   "repository": {
     "type": "git",
     "url": "https://github.com/phil-r/react-native-prompt"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "node --test test/unit/*.test.cjs"
+  },
   "main": "src/index.js",
   "files": [
     "android.demo.gif",
@@ -25,7 +27,11 @@
   ],
   "author": "Phil",
   "license": "ISC",
-  "dpendencies": {
-    "prop-types": "*"
+  "dependencies": {
+    "prop-types": "^15.8.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "react": "^19.3.0"
   }
 }

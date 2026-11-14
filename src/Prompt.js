@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   Modal,
-  Platform,
   Text,
   TextInput,
   TouchableWithoutFeedback,
@@ -64,6 +63,13 @@ export default class Prompt extends Component {
     length: 0
   };
 
+  componentDidUpdate(prevProps) {
+    if (this.props.visible && !prevProps.visible) {
+      const value = this.props.defaultValue || '';
+      this.setState({ value, length: value.length });
+    }
+  }
+
   componentDidMount() {
     this.setState({
       value: this.props.defaultValue,
@@ -77,20 +83,21 @@ export default class Prompt extends Component {
     this.props.onChangeText(value);
   };
 
-  _onSubmitPress = () => {
+  _onSubmitPress = async () => {
+    if (this.submitting) return;
     const { value } = this.state;
     const { limit } = this.props;
-    if (limit) {
-      if (value.length <= limit) {
-        this.props.onSubmit(value);
-      }
-    } else {
-      this.props.onSubmit(value);
+    if (limit && value.length > limit) return;
+    this.submitting = true;
+    try {
+      await this.props.onSubmit(value);
+    } finally {
+      this.submitting = false;
     }
   };
 
   _onCancelPress = () => {
-    this.props.onCancel();
+    if (!this.submitting) this.props.onCancel();
   };
 
   close = () => {
@@ -101,7 +108,6 @@ export default class Prompt extends Component {
     const {
       title,
       placeholder,
-      defaultValue,
       cancelText,
       submitText,
       borderColor,
@@ -128,7 +134,7 @@ export default class Prompt extends Component {
           <View style={styles.dialogBody}>
             <TextInput
               style={[styles.dialogInput, inputStyle]}
-              defaultValue={defaultValue}
+              value={this.state.value}
               onChangeText={this._onChangeText}
               onSubmitEditing={this._onSubmitPress}
               placeholder={placeholder}
@@ -193,7 +199,7 @@ export default class Prompt extends Component {
   render() {
     return (
       <Modal
-        onRequestClose={() => this.close()}
+        onRequestClose={this._onCancelPress}
         transparent={true}
         visible={this.props.visible}
       >

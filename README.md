@@ -73,11 +73,22 @@ npm install
 
 ### Run tests
 
+Use Node 24. The unit tests exercise the actual component with mocked native host elements; no simulator or Appium server is required.
+
 ```
 npm test
 ```
 
 ## Changelog
+
+### 1.0.11
+
+- Reset the input and character count to the current default when reopening.
+- Wait for asynchronous submissions; ignore repeated submits and cancellation until they finish. A failed submission keeps the draft and allows retry.
+- Route Android back requests through `onCancel`, matching controlled visibility.
+- Fix the `prop-types` dependency declaration and add regression tests.
+
+`visible` remains controlled by the parent. `onSubmit` may return a promise; the parent still decides when to close the prompt.
 
 ### 1.0.7
 
